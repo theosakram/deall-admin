@@ -129,7 +129,7 @@ const NavItem = (props: NavItemProps) => {
         bg={props.isActive ? "cyan.400" : "transparent"}
         color={props.isActive ? "white" : "black"}
         _hover={{
-          bg: "cyan.400",
+          bg: "cyan.200",
           color: "white",
         }}
       >

@@ -1,5 +1,5 @@
 import { useQuery, UseQueryOptions } from "react-query";
-import { getProducts } from "./productService";
+import { getProductCategories, getProducts } from "./productService";
 import { GetProductsRequest, GetProductsResponse } from "./productType";
 
 export const useGetProducts = (
@@ -16,4 +16,8 @@ export const useGetProducts = (
     () => getProducts(payload),
     options
   );
+};
+
+export const useGetCategories = () => {
+  return useQuery(["get-categories"], getProductCategories);
 };

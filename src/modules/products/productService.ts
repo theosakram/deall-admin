@@ -9,7 +9,17 @@ export const getProducts = (payload: GetProductsRequest) => {
     withoutSearch as Record<string, string>
   );
 
+  if (payload.category) {
+    return fetcher<GetProductsResponse>(
+      `${BASE_URL}/products/category/${payload.category}`
+    );
+  }
+
   return fetcher<GetProductsResponse>(
     `${BASE_URL}/products/search?q=${payload.search}&${searchParams.toString()}`
   );
+};
+
+export const getProductCategories = () => {
+  return fetcher<Array<string>>(`${BASE_URL}/products/categories`);
 };

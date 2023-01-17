@@ -15,7 +15,7 @@ export interface Product {
 export interface GetProductsRequest extends Record<string, unknown> {
   limit: number;
   skip: number;
-  select: string;
+  category?: string;
   search: string;
 }
 

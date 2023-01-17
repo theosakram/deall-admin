@@ -12,8 +12,8 @@ export const WithSidebar = ({ children }: PropsWithChildren) => {
       {
         name: "Products",
         icon: GoPackage,
-        href: "/",
-        isActive: pathname === "/",
+        href: "/products?page=1",
+        isActive: pathname === "/products",
       },
       {
         name: "Cart",

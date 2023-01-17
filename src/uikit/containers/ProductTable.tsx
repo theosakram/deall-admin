@@ -2,6 +2,7 @@ import { useMemo } from "react";
 import { Table } from "../components/Table";
 import type { Column } from "react-table";
 import { useProductStore } from "src/modules/products/productStore";
+import { Text } from "@chakra-ui/react";
 
 interface TableData {
   productName: string;
@@ -29,6 +30,16 @@ export const ProductTable = () => {
       {
         Header: "Price",
         accessor: "price",
+        Cell: ({ value }) => {
+          return (
+            <Text>
+              {value?.toLocaleString("en-US", {
+                style: "currency",
+                currency: "USD",
+              })}
+            </Text>
+          );
+        },
       },
       {
         Header: "Stock",
