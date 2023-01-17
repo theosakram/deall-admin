@@ -1,56 +1,73 @@
 import {
-  Link as ChakraLink,
-  Text,
-  Code,
-  List,
-  ListIcon,
-  ListItem,
-} from '@chakra-ui/react'
-import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
+  Box,
+  CloseButton,
+  Flex,
+  FormControl,
+  Input,
+  InputGroup,
+  InputRightElement,
+  Spacer,
+} from "@chakra-ui/react";
+import { useForm } from "react-hook-form";
+import { useZustandProduct } from "src/modules/products/productStore";
+import { useStoreSelector } from "src/shared/hooks";
+import { ProductTable } from "src/uikit/containers/ProductTable";
 
-import { Hero } from '../components/Hero'
-import { Container } from '../components/Container'
-import { Main } from '../components/Main'
-import { DarkModeSwitch } from '../components/DarkModeSwitch'
-import { CTA } from '../components/CTA'
-import { Footer } from '../components/Footer'
+interface FormValue {
+  search: string;
+}
 
-const Index = () => (
-  <Container height="100vh">
-    <Hero />
-    <Main>
-      <Text color="text">
-        Example repository of <Code>Next.js</Code> + <Code>chakra-ui</Code> +{' '}
-        <Code>TypeScript</Code>.
-      </Text>
+const Index = () => {
+  const [filter, setFilter] = useStoreSelector(useZustandProduct, (state) => [
+    state.filter,
+    state.setFilter,
+  ]);
 
-      <List spacing={3} my={0} color="text">
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink
-            isExternal
-            href="https://chakra-ui.com"
-            flexGrow={1}
-            mr={2}
-          >
-            Chakra UI <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-        <ListItem>
-          <ListIcon as={CheckCircleIcon} color="green.500" />
-          <ChakraLink isExternal href="https://nextjs.org" flexGrow={1} mr={2}>
-            Next.js <LinkIcon />
-          </ChakraLink>
-        </ListItem>
-      </List>
-    </Main>
+  const { handleSubmit, register, reset } = useForm<FormValue>({
+    defaultValues: {
+      search: "",
+    },
+  });
 
-    <DarkModeSwitch />
-    <Footer>
-      <Text>Next ❤️ Chakra</Text>
-    </Footer>
-    <CTA />
-  </Container>
-)
+  return (
+    <Box pt="3rem">
+      <form
+        style={{ width: "100%" }}
+        onSubmit={handleSubmit((e) =>
+          setFilter({ ...filter, search: e.search })
+        )}
+      >
+        <Flex px="1rem">
+          <Spacer />
+          <FormControl w="15rem">
+            <InputGroup>
+              <Input
+                bg="white"
+                placeholder="Search product"
+                type="text"
+                border="1px solid"
+                borderColor="gray.300"
+                {...register("search")}
+              />
+              {!!filter.search && (
+                <InputRightElement>
+                  <CloseButton
+                    borderRadius="full"
+                    onClick={() => {
+                      reset();
+                      setFilter({ ...filter, search: "" });
+                    }}
+                  />
+                </InputRightElement>
+              )}
+            </InputGroup>
+          </FormControl>
+        </Flex>
+      </form>
 
-export default Index
+      <ProductTable />
+    </Box>
+  );
+};
+
+export default Index;
