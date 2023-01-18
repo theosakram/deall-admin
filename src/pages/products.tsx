@@ -1,8 +1,8 @@
 import { Box } from "@chakra-ui/react";
-
-import { ProductFilter } from "src/uikit/containers/ProductFilter";
-import { ProductPagination } from "src/uikit/containers/ProductPagination";
-import { ProductTable } from "src/uikit/containers/ProductTable";
+import { ProductChart } from "src/uikit/containers/products/ProductChart";
+import { ProductFilter } from "src/uikit/containers/products/ProductFilter";
+import { ProductPagination } from "src/uikit/containers/products/ProductPagination";
+import { ProductTable } from "src/uikit/containers/products/ProductTable";
 
 const ProductPage = () => {
   return (
@@ -10,6 +10,7 @@ const ProductPage = () => {
       <ProductFilter />
       <ProductTable />
       <ProductPagination />
+      <ProductChart />
     </Box>
   );
 };

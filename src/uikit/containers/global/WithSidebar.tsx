@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { PropsWithChildren, useMemo } from "react";
 import { FiShoppingCart } from "react-icons/fi";
 import { GoPackage } from "react-icons/go";
-import { LinkItemProps, Sidebar } from "../components/Sidebar";
+import { LinkItemProps, Sidebar } from "src/uikit/components/Sidebar";
 
 export const WithSidebar = ({ children }: PropsWithChildren) => {
   const { pathname } = useRouter();

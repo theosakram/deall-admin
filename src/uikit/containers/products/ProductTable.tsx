@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { Table } from "../components/Table";
 import type { Column } from "react-table";
 import { useProductStore } from "src/modules/products/productStore";
 import { Text } from "@chakra-ui/react";
+import { Table } from "src/uikit/components/Table";
 
 interface TableData {
   productName: string;
