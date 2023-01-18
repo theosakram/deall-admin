@@ -19,7 +19,7 @@ export const WithSidebar = ({ children }: PropsWithChildren) => {
         name: "Cart",
         icon: FiShoppingCart,
         href: "/cart",
-        isActive: pathname === "/cart",
+        isActive: pathname.includes("cart"),
       },
     ];
   }, []);

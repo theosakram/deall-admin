@@ -38,7 +38,7 @@ export const ProductFilter = () => {
     <Flex w="100%">
       <Spacer />
       <HStack pr="1rem">
-        <FormControl w="15rem">
+        <FormControl w={{ base: "10rem", md: "15rem" }}>
           <Select
             bg="white"
             placeholder="Filter by category"
@@ -57,11 +57,11 @@ export const ProductFilter = () => {
             return setFilter({ ...filter, search: e.search, category: "" });
           })}
         >
-          <FormControl w="15rem">
+          <FormControl w={{ base: "10rem", md: "15rem" }}>
             <InputGroup>
               <Input
                 bg="white"
-                placeholder="Search product by name"
+                placeholder="Search product"
                 type="text"
                 border="1px solid"
                 borderColor="gray.300"

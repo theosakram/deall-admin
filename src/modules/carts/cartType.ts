@@ -10,9 +10,17 @@ export interface Cart {
   userId: 97;
 }
 
+export interface CartWithUsername extends Cart {
+  userName: string;
+}
+
 export interface GetCartsResponse {
   carts: Array<Cart>;
   limit: number;
   skip: number;
   total: number;
+}
+
+export interface GetCartByIdRequest {
+  id: number;
 }

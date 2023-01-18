@@ -41,6 +41,9 @@ export const ProductChart = () => {
 
   const chartLabel = useMemo(() => {
     if (data) {
+      /**
+       * This is needed because there are "Apple", "apple", and "APPle"
+       */
       const uniqueBrand = new Set([
         ...data.products.map((datum) => datum.brand.toLowerCase()),
       ]);
@@ -51,6 +54,9 @@ export const ProductChart = () => {
 
   const chartData = useMemo(() => {
     if (data) {
+      /**
+       * This is needed because there are "Apple", "apple", and "APPle"
+       */
       const mapOfData = new Map();
 
       data.products.forEach((product) => {

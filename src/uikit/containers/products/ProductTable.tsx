@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import type { Column } from "react-table";
 import { useProductStore } from "src/modules/products/productStore";
-import { Text } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 import { Table } from "src/uikit/components/Table";
 
 interface TableData {
@@ -67,10 +67,12 @@ export const ProductTable = () => {
   }, [data]);
 
   return (
-    <Table<TableData>
-      columns={columns}
-      data={tableData}
-      isLoading={isLoading}
-    />
+    <Box w="100%" overflow="auto">
+      <Table<TableData>
+        columns={columns}
+        data={tableData}
+        isLoading={isLoading}
+      />
+    </Box>
   );
 };

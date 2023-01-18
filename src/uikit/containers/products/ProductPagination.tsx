@@ -7,7 +7,7 @@ import {
   PaginationContainer,
   PaginationPageGroup,
 } from "@ajna/pagination";
-import { Flex, Spacer } from "@chakra-ui/react";
+import { Flex, Show, Spacer } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useProductStore } from "src/modules/products/productStore";
 
@@ -39,7 +39,9 @@ export const ProductPagination = () => {
 
   return (
     <Flex>
-      <Spacer />
+      <Show above="md">
+        <Spacer />
+      </Show>
       <Pagination
         pagesCount={pagesCount}
         currentPage={page ? +page : 1}
@@ -55,14 +57,14 @@ export const ProductPagination = () => {
               <PaginationPage
                 key={`pagination_page_${page}`}
                 page={page}
-                w={7}
                 bg="red.300"
+                w={{ base: 5, md: 7 }}
                 fontSize="sm"
                 _hover={{
                   bg: "green.300",
                 }}
                 _current={{
-                  w: 7,
+                  w: { base: 5, md: 7 },
                   bg: "green.300",
                   fontSize: "sm",
                   _hover: {

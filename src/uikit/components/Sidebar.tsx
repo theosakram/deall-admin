@@ -34,7 +34,12 @@ export const Sidebar = (props: SidebarProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box minH="100vh" bg={useColorModeValue("gray.100", "gray.900")}>
+    <Box
+      h="100vh"
+      bg={useColorModeValue("gray.100", "gray.900")}
+      overflowY="auto"
+      overflowX="hidden"
+    >
       <SidebarContent
         onClose={() => onClose}
         boxProps={{ display: { base: "none", md: "block" } }}
