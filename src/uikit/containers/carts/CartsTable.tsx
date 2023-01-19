@@ -1,8 +1,8 @@
-import { Button } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import Link from "next/link";
 import { useMemo } from "react";
 import { Column } from "react-table";
-import { useGetCarts } from "src/modules/carts/cartHooks";
+import { useCartStore } from "src/modules/carts/cartStore";
 import { Table } from "src/uikit/components/Table";
 
 interface TableData {
@@ -14,7 +14,9 @@ interface TableData {
 }
 
 export const CartsTable = () => {
-  const { data, isLoading } = useGetCarts();
+  const {
+    cartResponse: { data, isLoading },
+  } = useCartStore();
 
   const columns = useMemo((): Array<Column<TableData>> => {
     if (data) {
@@ -42,7 +44,7 @@ export const CartsTable = () => {
             return (
               <Link
                 href={{
-                  pathname: "/cart/[id]",
+                  pathname: "/carts/[id]",
                   query: { id: String(value) },
                 }}
                 passHref
@@ -72,5 +74,9 @@ export const CartsTable = () => {
     return [];
   }, [data]);
 
-  return <Table data={tableData} columns={columns} isLoading={isLoading} />;
+  return (
+    <Box w="100%" overflow="auto">
+      <Table data={tableData} columns={columns} isLoading={isLoading} />;
+    </Box>
+  );
 };

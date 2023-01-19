@@ -64,7 +64,11 @@ export const Sidebar = (props: SidebarProps) => {
         </DrawerContent>
       </Drawer>
 
-      <MobileNav display={{ base: "flex", md: "none" }} onOpen={onOpen} />
+      <MobileNav
+        flexProps={{ display: { base: "flex", md: "none" } }}
+        onOpen={onOpen}
+        header={props.header}
+      />
       <Box ml={{ base: 0, md: 60 }} p="4">
         {props.children}
       </Box>
@@ -92,7 +96,7 @@ const SidebarContent = (props: SidebarContentProps) => {
     >
       <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
         <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          {props.header || "Logo"}
+          {props.header || "Header"}
         </Text>
         <CloseButton
           display={{ base: "flex", md: "none" }}
@@ -154,10 +158,12 @@ const NavItem = (props: NavItemProps) => {
   );
 };
 
-interface MobileProps extends FlexProps {
+interface MobileProps {
+  flexProps: FlexProps;
   onOpen: () => void;
+  header?: string;
 }
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const MobileNav = (props: MobileProps) => {
   return (
     <Flex
       ml={{ base: 0, md: 60 }}
@@ -168,17 +174,17 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
       justifyContent="flex-start"
-      {...rest}
+      {...props.flexProps}
     >
       <IconButton
         variant="outline"
-        onClick={onOpen}
+        onClick={props.onOpen}
         aria-label="open menu"
         icon={<FiMenu />}
       />
 
       <Text fontSize="2xl" ml="8" fontFamily="monospace" fontWeight="bold">
-        Logo
+        {props.header || "Header"}
       </Text>
     </Flex>
   );

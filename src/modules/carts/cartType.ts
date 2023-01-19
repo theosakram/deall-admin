@@ -3,7 +3,7 @@ import { Product } from "../products/productType";
 export interface Cart {
   discountedTotal: number;
   id: number;
-  products: Array<Product>;
+  products: Array<Product & { discountedPrice: number }>;
   total: number;
   totalProducts: number;
   totalQuantity: number;
@@ -12,6 +12,11 @@ export interface Cart {
 
 export interface CartWithUsername extends Cart {
   userName: string;
+}
+
+export interface GetCartsRequest extends Record<string, unknown> {
+  limit: number;
+  skip: number;
 }
 
 export interface GetCartsResponse {

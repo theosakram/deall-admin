@@ -6,18 +6,20 @@ import {
   Cart,
   CartWithUsername,
   GetCartByIdRequest,
+  GetCartsRequest,
   GetCartsResponse,
 } from "./cartType";
 
 export const useGetCarts = (
+  payload: GetCartsRequest,
   options?: UseQueryOptions<
     GetCartsResponse,
     unknown,
     GetCartsResponse,
-    Array<string>
+    Array<string | GetCartsRequest>
   >
 ) => {
-  return useQuery(["get-carts"], getCarts, options);
+  return useQuery(["get-carts", payload], () => getCarts(payload), options);
 };
 
 export const useGetCartById = (

@@ -18,8 +18,8 @@ export const WithSidebar = ({ children }: PropsWithChildren) => {
       {
         name: "Cart",
         icon: FiShoppingCart,
-        href: "/cart",
-        isActive: pathname.includes("cart"),
+        href: "/carts?page=1",
+        isActive: pathname.includes("carts"),
       },
     ];
   }, []);
