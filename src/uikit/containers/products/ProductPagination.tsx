@@ -57,18 +57,20 @@ export const ProductPagination = () => {
               <PaginationPage
                 key={`pagination_page_${page}`}
                 page={page}
-                bg="red.300"
                 w={{ base: 5, md: 7 }}
                 fontSize="sm"
                 _hover={{
-                  bg: "green.300",
+                  bg: "blackAlpha.500",
+                  color: "white",
                 }}
                 _current={{
                   w: { base: 5, md: 7 },
-                  bg: "green.300",
+                  bg: "custom.blue.500",
+                  color: "white",
                   fontSize: "sm",
                   _hover: {
-                    bg: "blue.300",
+                    bg: "blackAlpha.500",
+                    color: "white",
                   },
                 }}
               />

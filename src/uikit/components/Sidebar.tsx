@@ -135,10 +135,10 @@ const NavItem = (props: NavItemProps) => {
         borderRadius="lg"
         role="group"
         cursor="pointer"
-        bg={props.isActive ? "cyan.400" : "transparent"}
+        bg={props.isActive ? "custom.blue.300" : "transparent"}
         color={props.isActive ? "white" : "black"}
         _hover={{
-          bg: "cyan.200",
+          bg: "blackAlpha.500",
           color: "white",
         }}
       >

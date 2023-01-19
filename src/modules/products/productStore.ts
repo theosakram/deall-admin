@@ -21,10 +21,13 @@ export const useProductStore = () => {
   const { query } = useRouter();
   const filter = useZustandProduct((state) => state.filter);
   const page = query.page ? +query.page : 1;
-  const productResponse = useGetProducts({
-    ...filter,
-    skip: (page - 1) * filter.limit,
-  });
+  const productResponse = useGetProducts(
+    {
+      ...filter,
+      skip: (page - 1) * filter.limit,
+    },
+    { onError: (err) => console.log(err) }
+  );
 
   return {
     productResponse,

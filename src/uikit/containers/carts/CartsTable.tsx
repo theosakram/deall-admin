@@ -49,7 +49,9 @@ export const CartsTable = () => {
                 }}
                 passHref
               >
-                <Button colorScheme="blue">Detail</Button>
+                <Button colorScheme="blue" bg="custom.blue.300">
+                  Detail
+                </Button>
               </Link>
             );
           },

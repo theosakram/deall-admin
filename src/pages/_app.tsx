@@ -1,6 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 
-import theme from "../theme";
+import theme from "../config/theme";
 import { AppProps } from "next/app";
 import { QueryProvider } from "src/providers/QueryProvider";
 import { WithSidebar } from "src/uikit/containers/global/WithSidebar";

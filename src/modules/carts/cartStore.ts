@@ -20,13 +20,16 @@ export const useCartStore = () => {
   const { query } = useRouter();
   const filter = useZustandCart((state) => state.filter);
   const page = query.page ? +query.page : 1;
-  const cartResponse = useGetCarts({
-    ...filter,
-    skip: (page - 1) * filter.limit,
-  });
+  const cartResponse = useGetCarts(
+    {
+      ...filter,
+      skip: (page - 1) * filter.limit,
+    },
+    { onError: (err) => console.log(err) }
+  );
   const cartByIdResponse = useGetCartById(
     { id: +query.id },
-    { enabled: !!query.id }
+    { enabled: !!query.id, onError: (err) => console.log(err) }
   );
 
   return {

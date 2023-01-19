@@ -10,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { Center, Spinner } from "@chakra-ui/react";
+import { Center, Spinner, useToken } from "@chakra-ui/react";
 
 ChartJS.register(
   CategoryScale,
@@ -38,6 +38,7 @@ export const ProductChart = () => {
   const {
     productResponse: { data, isLoading },
   } = useProductStore();
+  const bgColor = useToken("colors", "custom.blue.500");
 
   const chartLabel = useMemo(() => {
     if (data) {
@@ -78,7 +79,7 @@ export const ProductChart = () => {
           {
             label: "Number of items",
             data: Array.from(mapOfData, ([_, value]) => value),
-            backgroundColor: "rgba(255, 99, 132, 0.5)",
+            backgroundColor: bgColor,
           },
         ],
       };
